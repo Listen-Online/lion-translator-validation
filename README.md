@@ -20,9 +20,9 @@ npm i translator-validation-oas
 ### Documentation
 
 ```
-var rules= require('./rules.js')
+var rule= require('translator-validation-oas')
 
-rules.rules(OrignalSwaggerfile, translatedSwaggerFile, [,options])
+rule.rules(OrignalSwaggerfile, translatedSwaggerFile, [,options])
 
 ```
 
@@ -33,9 +33,9 @@ translatedSwaggerFile: Modified Swagger File created after the user has modified
 ### Usage
 
 ```
-const rules = require('translator-validation-oas');
+const rule = require('translator-validation-oas');
 
-let result = rules.rules('sample_oas.json', 'sample_translation.json', {
+let result = rule.rules('sample_oas.json', 'sample_translation.json', {
   "id": "Rule2",
   "functionName": "checkMatch",
   "path": "$.servers[*]",
@@ -63,6 +63,7 @@ ruleid| id |Give a unique rule id
 JsonPath|String| Look up JSon path documentation. This will determine the target object the function is applied to.
 fieldname| String| Give the target field name that the function is applied to
 level | String | Choose from warn, error,info
+errmsg| String | Error message for the Rule
 parameter| [key,value] | Add required parameters for the chosen function
 
 
