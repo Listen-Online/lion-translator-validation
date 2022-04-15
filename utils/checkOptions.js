@@ -1,7 +1,7 @@
 let definedProp = 1;
 let undefinedProp = 0;
 var basic = require('../utils/basicFunctions.js');
-var custom = require('../utils/customFunctions.js');
+var custom = require('../utils/customFunction.js');
 
 function checkProperty(options, propertyNameList,objfunc) {
   var errflag=0;
@@ -13,6 +13,8 @@ function checkProperty(options, propertyNameList,objfunc) {
   }
   return errflag? undefinedProp: objfunc;
 }
+
+// function to check if right parameters for resuable or custom function exist
 
 module.exports.checkOptions = function(functionName, options) {
   var propertyNameList=['ruledesc','errmsg','path'];
@@ -45,9 +47,9 @@ module.exports.checkOptions = function(functionName, options) {
       propertyNameList.push('fieldname');
       return checkProperty(options,propertyNameList,basic.checkUnique);
       break;
-    case "customFunction":
-      propertyNameList.push('code','pythonPath');
-      return checkProperty(options,propertyNameList,custom.customFunction);
+    case "checkCustomFunction":
+      propertyNameList.push('code','customFunctionName');
+      return checkProperty(options,propertyNameList,custom.checkCustomFunction);
       break;
     default:
       return checkProperty(options, propertyNameList);
